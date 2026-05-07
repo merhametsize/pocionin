@@ -1,1 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🌌</title>
 
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #050505;
+  color: #d0d0d0;
+  font-family: monospace;
+  overflow-x: hidden;
+}
+
+/* 🌌 NEBULA BACKGROUND */
+.nebula {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.nebula::before,
+.nebula::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.08;
+  animation: driftNebula 40s infinite alternate ease-in-out;
+}
+
+.nebula::before {
+  background: #7c3aed;
+  top: 10%;
+  left: 20%;
+}
+
+.nebula::after {
+  background: #06b6d4;
+  bottom: 10%;
+  right: 20%;
+}
+
+@keyframes driftNebula {
+  from { transform: translate(0, 0); }
+  to { transform: translate(60px, -40px); }
+}
+
+/* ⭐ STARS */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: drift linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translateY(0px); }
+  to { transform: translateY(100vh); }
+}
+
+/* 🪐 PLANETS */
+.planets {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+  animation: float 50s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(0px) rotate(0deg); }
+  to { transform: translateY(-120vh) rotate(360deg); }
+}
+
+/* 🌠 SHOOTING STARS */
+.shooting-star {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  opacity: 0;
+  transform: rotate(-20deg);
+  animation: shoot 2s ease-out forwards;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0) rotate(-20deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(300px) translateY(150px) rotate(-20deg);
+  }
+}
+
+/* MAIN UI */
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 70px auto 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+input {
+  margin-top: 20px;
+  padding: 10px;
+  width: 60%;
+  background: transparent;
+  border: 1px solid #222;
+  color: #ccc;
+  text-align: center;
+  outline: none;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid #222;
+  color: #aaa;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #666;
+  color: white;
+}
+
+#out {
+  margin-top: 40px;
+  white-space: pre-wrap;
+  text-align: left;
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌌 layers -->
+<div class="nebula"></div>
+<div class="stars" id="stars"></div>
+<div class="planets" id="planets"></div>
+
+<div class="container">
+
+  <input id="pw" type="password" placeholder="key">
+  <br>
+  <button onclick="run()">unlock</button>
+
+  <div id="out"></div>
+
+</div>
+
+<script>
+
+// =====================
+// STARS
+// =====================
+const starContainer = document.getElementById("stars");
+
+for (let i = 0; i < 100; i++) {
+  const s = document.createElement("div");
+  s.className = "star";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+  s.style.animationDuration = (10 + Math.random() * 20) + "s";
+  s.style.opacity = Math.random() * 0.5;
+  starContainer.appendChild(s);
+}
+
+// =====================
+// PLANETS
+// =====================
+const planetContainer = document.getElementById("planets");
+
+const colors = ["#a3bffa", "#fca5a5", "#86efac", "#fcd34d", "#c4b5fd"];
+
+for (let i = 0; i < 6; i++) {
+  const p = document.createElement("div");
+  p.className = "planet";
+
+  const size = 40 + Math.random() * 120;
+
+  p.style.width = size + "px";
+  p.style.height = size + "px";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.top = Math.random() * 100 + "vh";
+  p.style.background = colors[Math.floor(Math.random() * colors.length)];
+  p.style.animationDuration = (40 + Math.random() * 40) + "s";
+
+  planetContainer.appendChild(p);
+}
+
+// =====================
+// SHOOTING STARS (rare events)
+// =====================
+function spawnShootingStar() {
+  const s = document.createElement("div");
+  s.className = "shooting-star";
+
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 50 + "vh";
+
+  document.body.appendChild(s);
+
+  setTimeout(() => s.remove(), 2000);
+}
+
+// rare spawn
+setInterval(() => {
+  if (Math.random() < 0.3) spawnShootingStar();
+}, 5000);
+
+// =====================
+// ONLY STORED DATA
+// =====================
+const ciphertext = "placeholder";
+
+document.getElementById("out").textContent = ciphertext;
+
+// =====================
+// CRYPTO 
+// =====================
+
+function hash(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h *= 16777619;
+  }
+  return h >>> 0;
+}
+
+function rng(seed) {
+  return function () {
+    seed ^= seed << 13;
+    seed ^= seed >> 17;
+    seed ^= seed << 5;
+    return (seed >>> 0) / 4294967296;
+  };
+}
+
+function buildPermutation(len, password) {
+  let seed = hash(password);
+  let rand = rng(seed);
+
+  let idx = [...Array(len).keys()];
+
+  for (let i = len - 1; i > 0; i--) {
+    let j = Math.floor(rand() * (i + 1));
+    [idx[i], idx[j]] = [idx[j], idx[i]];
+  }
+
+  return idx;
+}
+
+function unpermute(text, password) {
+  let perm = buildPermutation(text.length, password);
+  let out = Array(text.length);
+
+  for (let i = 0; i < perm.length; i++) {
+    out[perm[i]] = text[i];
+  }
+
+  return out.join("");
+}
+
+function run() {
+  let pw = document.getElementById("pw").value;
+  let result = unpermute(ciphertext, pw);
+  document.getElementById("out").textContent = result;
+}
+
+document.getElementById("pw").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") run();
+});
+
+</script>
+
+</body>
+</html>
