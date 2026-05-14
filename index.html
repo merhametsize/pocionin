@@ -244,48 +244,123 @@ setInterval(() => {
 // =====================
 // ONLY STORED DATA
 // =====================
-const ciphertext = "oelcpeladrh";
+const ciphertext = `pl r spori el. vmesnrra n.intoerroli  o arql tissode  ir ealn maome grgqose rl iaoiogig nr uteeauotrbqstrraea oia a ipst  gt o i,rl ahlutavtnìiieniloleioedtoa orre,clee erstigrrtinae dtl,llgapiiutooi  ale viagmlo  uGàn gcg
+ai ozsoateaa Mma!reulgsr aI.eC aoat bonilsa,ensel oNttei  o`;
 
 document.getElementById("out").textContent = ciphertext;
 
 // =====================
-// CRYPTO 
+// CRYPTO
 // =====================
 
-function hash(str) {
-  let h = 2166136261;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h *= 16777619;
-  }
-  return h >>> 0;
+// SHA-256 -> bytes
+async function sha256Bytes(str) {
+
+  const data = new TextEncoder().encode(str);
+
+  const hashBuffer = await crypto.subtle.digest(
+    "SHA-256",
+    data
+  );
+
+  return new Uint8Array(hashBuffer);
 }
 
-function rng(seed) {
-  return function () {
-    seed ^= seed << 13;
-    seed ^= seed >> 17;
-    seed ^= seed << 5;
-    return (seed >>> 0) / 4294967296;
+// deterministic cryptographic RNG
+function createRNG(seedBytes) {
+
+  let counter = 0;
+
+  let pool = [];
+
+  let index = 0;
+
+  async function refill() {
+
+    const input = new Uint8Array(
+      seedBytes.length + 4
+    );
+
+    input.set(seedBytes);
+
+    input.set([
+      (counter >> 24) & 255,
+      (counter >> 16) & 255,
+      (counter >> 8) & 255,
+      counter & 255
+    ], seedBytes.length);
+
+    counter++;
+
+    const hashBuffer = await crypto.subtle.digest(
+      "SHA-256",
+      input
+    );
+
+    pool = Array.from(
+      new Uint8Array(hashBuffer)
+    );
+
+    index = 0;
+  }
+
+  return async function rand() {
+
+    if (index >= pool.length) {
+      await refill();
+    }
+
+    return pool[index++] / 256;
   };
 }
 
-function buildPermutation(len, password) {
-  let seed = hash(password);
-  let rand = rng(seed);
+// build deterministic permutation
+async function buildPermutation(len, password) {
+
+  const seed = await sha256Bytes(password);
+
+  const rand = createRNG(seed);
 
   let idx = [...Array(len).keys()];
 
   for (let i = len - 1; i > 0; i--) {
-    let j = Math.floor(rand() * (i + 1));
-    [idx[i], idx[j]] = [idx[j], idx[i]];
+
+    const r = await rand();
+
+    const j = Math.floor(r * (i + 1));
+
+    [idx[i], idx[j]] =
+      [idx[j], idx[i]];
   }
 
   return idx;
 }
 
-function unpermute(text, password) {
-  let perm = buildPermutation(text.length, password);
+// encrypt
+async function permute(text, password) {
+
+  const perm = await buildPermutation(
+    text.length,
+    password
+  );
+
+  let out = Array(text.length);
+
+  for (let i = 0; i < perm.length; i++) {
+    out[i] = text[perm[i]];
+  }
+
+  return out.join("");
+}
+
+// decrypt
+async function unpermute(text, password) {
+
+  const perm = await buildPermutation(
+    text.length,
+    password
+  );
+
   let out = Array(text.length);
 
   for (let i = 0; i < perm.length; i++) {
@@ -295,13 +370,19 @@ function unpermute(text, password) {
   return out.join("");
 }
 
-function run() {
-  let pw = document.getElementById("pw").value;
-  let result = unpermute(ciphertext, pw);
-  document.getElementById("out").textContent = result;
+async function run() {
+
+  let pw =
+    document.getElementById("pw").value;
+
+  let result =
+    await unpermute(ciphertext, pw);
+
+  document.getElementById("out").textContent =
+    result;
 }
 
-document.getElementById("pw").addEventListener("keydown", (e) => {
+document.getElementById("pw").addEventListener("keydown", e => {
   if (e.key === "Enter") run();
 });
 
