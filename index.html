@@ -248,7 +248,8 @@ let ciphertext = "";
 fetch("ciphertext.txt")
   .then(response => response.text())
   .then(text => {
-    ciphertext = text;
+    // Trim any trailing/leading newlines or spaces
+    ciphertext = text.trim(); 
     document.getElementById("out").textContent = ciphertext;
   })
   .catch(err => console.error("Failed to load ciphertext:", err));
