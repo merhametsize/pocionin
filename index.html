@@ -166,28 +166,30 @@ button:hover {
 
 <body>
 
-<!-- 🌌 layers -->
 <div class="nebula"></div>
 <div class="stars" id="stars"></div>
 <div class="planets" id="planets"></div>
 
 <div class="container">
-
   <input id="pw" type="password" placeholder="key">
   <br>
   <button onclick="run()">unlock</button>
-
   <div id="out"></div>
-
 </div>
 
+<script id="cipher-source" type="text/plain">
+bWZ0ICAgc3F0IHVkICBpZwpvX3RlZXUgICByZW8nIGEgICB0fHBlZSAgamUgcyhjbGxvZCAgbCAgcyAtJydlIHQgcl9uIGFzIGUgICcgIGEtZXxlZGlsZSBldAogIGE7YW8gIHAgaXAgLGFpIHZhZWV0LmUgIG58bwpycmUgciBudiBlIMOgCi0gc2UpcixpYXJlaXAgLCAgbCAgZXQgIHZlc8OpLWQgZHBlc2UgLWNyfHNvLHNyZSxvZXNldC0geW5vKCBhbAptZQogbiB1diAgIHQsdCAgIG1ydHFyYyBkZWUgIGVlcmFzCmUgIG1uICBsaXJlICAuLHQgc3VyZSB0bSAsdSBpZSBmcyBsZCAgLHwgYmllZSB8IGV0CiBuIGUgZGVKaWUgZXJlICAgcmlvfHNhIHBvc8OicnMgICAgdCAgICBtLCBkw6p8ICBzXG4gcnxlX2llcCBzcnNhbCBxIHJzZWN0IHVwb294CiBldSAgb3MuZSBwc3QgfCBubiAgaSBycCBsdF8KcG8sIGUneCAgJy98dCAgYWEgZQplci9lIAplaXRhYXBlICBzdiBpIHMgbyBlcG5pJ3FkaWFmZXUteGV5ZWFpcyBzYSAgICBxfCBqdCBwcm5zdMOpIG4gKC1zIHUKICAgbnN8LSBhZcOpIHVlXMOqIHNzc2lhIHNwYyxodWVqYmEgcnQucyAgdCAgIDotdGZ8c3R2cnMgaWVmYSBqbXxycm90acOpICBlZGVhZWUgaCDDqSljICAgc25fJ2RcIG4sYiA7aCAtIGNlbCB0c3xvIHIwICAgcm9lIGEgIGUgIGx1ICB8fG8gbiAgaSAnIG52LXUgaS10cmUwIG4gc2VcZW4gJ2x2YwplIG4ufGUgdGVzICAgIG4gZXFvcHNlY2UgICAgIGMgbzssb2FlIHRcdHIgIHNhw6ItdXNjbiBwcCB1byAgIGNzX2VpaSAgZW4gYXEtZXVhICxkIGVkdSDDri0gbmVzLHRfICAgICByIGRuaSB0c21jLHV0Lycgcm4gIGk7ZWRkXyBsIGktIC51LnQgCiBzc2UKZXQgICx0IHJwcmkgZV8gdGlpICBpICAKIHIscHRhIHUgXHVoICBuLHQgIDvDqSBybGVvLmlzb3FtLXIgc3MgIG0gdMOpb3ZvIHJ0ZSBzYW8gbSwgIDt1aSAsdWhmIDplaSAgIHQgIHVzIGVlICAgw6dzKSBtIGEgICkgciAufGUgIGVlaSByVGV0dcOoZWVhICBuIHJfICxoIG9lIGkgdW9lbCBscmxyIG9xZSBlZXVlZS1lZWVkJy5zdCBhdkogCmVlZWBlLi1vIHggIHNlcwoobG9CZW9vc3IgYSwsciB0IGFhZQpzdiBlfG4uZWNqdHBjZSB0dCBpIHUgbiB0byAgZSAucGVlICludXIgbHVpZSBzc3NhcGVsZSAgNW11IFwgIGUgfCBsdnVwdW1kIGVhZXMtaWQtCnJzZWVlIHRlbm5sLW5haGRjcmBsdGknZXIgZSB0bMOoZSAubGwgIMOnZGEgIGksaS51aWXDoCBpIHRpY3wgZW9uIGFkIGktICBlfCBpaS4gZnUgCnQgcnMgbnQsCiBcdHMgbTt8c2MgbCBsbnQgaWVlcm5lIHJ0ZGV0aSAgbCA7bCAscWFzYWU2c2RkZCAgIGxwcG5zLiAgO27DqXR2dWUgIGVhICcgeSAgOmluZSBwaWUgZW4gIG1lYSAgdWNpIHNwdGApb3JlICAgY3IndXUgbCAuIG9zIHxlY3V2fG4gdWDDqCDDqiwgIHMtdV9sIHVzdWwgbiB2ICAgc3VhXGQgcnxudiAsLnIgICxcci50ZHUgIHRzKCBvIGFzw6lldUVlbGVzLnUgbXJkYXNlIHwgdWVzfCBlICB0Y8OuYXQgbiBuJ3hyaCBkICBzICBsXyByUGVudCAgY298IG5hcnVtICB8c3QgYHBldW1hdSAgICBhYW5lw6ktbGFuIEogcm8gZWVlL2VzcmggIGV2w65yYXEgc3UnLXAgIG8gIG8gZW5ycyBkc3JjICAgICByIGVyciduZWVldXIgL3Rhw6nDqiAgamPDqSAgciAgcXIgcyByIG9tCix0ICAtIGMgLHVuIHRuICApc290IHQgICAtIC4gbHVhIG5zYyAubnMgdmkudWpydiAgIHIgb2EgIHRqb2lpICAgLmVvIG0nIGEpaWlldCAgICAgIGkgIApgYWVwICBhIMOpY2Ugw6BzIGVsIEpiIC07LGV1eCBpIF8uZWUgIHQnIHRpIHUgIGEgdXMgIGUuIHF1IF9qZXxyc3wgZSDDqWkgJ28gICAsamV8cmFKLQonYXQgZSBKZSwnPGNkb3RjdGVlcyAgYXRyYydudHRvZWZhICAgdXRlZS5zc29kciAgdG5lZSxlYWUKIHQnZWQgb2kgb2wsZSAgcyAgfHRkw4dpIHNhICBjJyBydHRyciBtLCd8IHUgdSAgZS8gcTJ0dWIgIGlkdSAgIGkgdGUgdCBlc2VuICBlICBvw6kgICAuciBcbCAgXGFvbnggcicgICBlOmVjLGlpdW4gICBufHF0bSB1ICAgICcgbnV0dCAoLSBlbyAgbm8gaSdhZmVvZSJscGRhdjB5L3YgIG5cIChhdG9gICB4ICByfCAnZWVkIHIgYSB2L3RzbmlvIGVuICBfbSAgbWZudGogIHwgdCllbjogbzsgdSBlZXMgdSBsIHYgIG5sYXxndGV1LiAgZW4Kc2VpCiAgw6kgICBzaSBzY191O3MgZWkuICB1aSAgdHUgbsOpJwpULWFpdQphIG8gZSBhZSAgIHIgZSByIHMgICBwLSB1ICB0YSAoIHMgJyAgY2VuLC10ICBlZXRhICAgdmlpICAgIGVpc24uYSBgY2F0bHJyIGEgLFFybnMgcHB1biAsICBzCnQgICBic2V0IHRzw6ogIGQgfGZlZWwgYV8gIHQgIGVvZCBlZXIgXyB1aWNyc2VlbmVwaW9vdHhydCBlcyAgZXNjbmMKdCB1IG8gIHMgZSAvICDDqiBubmVmY3MgZHVpIHMgciBpIG9jbSAKZCB8fGlvCiBkdW9xJ3QgcCBsbmZzdC3DqWVlLWV0biBldGEgJ3Mgw6BhdQogIG5ycwpzZcOuYXMnLiBybWVzZXMgICAgaW8gNyAwCiByIGlpbnByIGxlcGQgbSBkIGRpdCAgIC5uYHVoX290b2cgaidxZXViIHUKIGVsICBkdCBhb3RmZ2VhIGV1YSBvbGV1ICBhciB2ICAgZCByICAgdSBpeGJuOsOpdGUKIGUicWVlc2ZkIGFpYS0gw6J0biBzICBjIGFwci4uIFEgc2VjIHN0dXxuLHVuw6lwbCBlLXx1XCBww6lhYWlhLiB0ICxcbnNvZXMgIHNkIHIgICA7cml8IG8gc2VzJ2VlIMOpIHAgCiBzZXNlCm9pb2p0by4gc25yYnQgICxzbSAgIGQgdCBkLW9ldCwgcywgIG5kLGYgdGEgfG0gbGlpfGdvUGQgICx0ZSBlbmF1VCBuJ2VpYyBofGBlb3BlIF9ncyB0ZmVncmkgIGFlbSAgIC5pdHNtOm4gdCBvLHB1dSDDqSDDqSAgdGNwIC1hLnBhcW4gICBibiBlIHNucXAgICAgICAgYS7DoCAtIAogIGF0YWEKICBhIG9tIGVtbiBuLmUgLSAKIGNyOyBlICB1b19yIHNtcm8gaWwgIG4gIHAsICB4ICBlbnIgdCAgIAphcm9pb2VyZS4gcyAsICBfc3UgaSxvbmx1aSBlLW4gICAgfMOgdG1xYcOpc258byAsICAnaSAgdWhlc19jIG4gIHN0eCAgby8gZ28gZWRsw6kgLmUuZXUgZVw7cyB8LSBjZS9uICAgXGEgcy0gICBybCwpIHZmJ3VlbmkgbCcgIMOnCi9yICB1b3VvdG3DqWUgdWllZXYgciAgIHBhb3QucyB2IGEgIC3DqW9kaGUKYCBtIHNlYXUgaWlpZSBzbnRlb2ogb2UgIHJ8byBmYWQgcnRwcmIgOyBhIGV0cm8tIApnJ2/DqCB1ci1ibXUgICAsbnYgIG9lXywgICAgZWwgIHAgZHNhZWVndWogICBsaiB2Y2lzbm5pcyBuICBcdApvZWEgaC8gdCBjZWBubWFpb2BzY3MgbnEscm8gLWggdnJzIGFub3UnIHIgcSBfIHMgIGEgdXRzIGF8bl8gcGFldHNuZXRlLHJlbiB0dSAsICAuIGlww6k6JyAnZXRlZXYgbicgLWRydCAgYG4gfCAgLXVzbicnIGlpY1xtZXBgaXRvIHRkIGNsIGEgc3MgICB0IGUgIG9ubiBvIG4hbXQgOywgZSAgbm4tIGF1dW8gw6ltZXEgZcOqZHNjdXxwdXQgbmV1ZXMtLWFsYcOnJ3xscGVubSAgIDsgIC52bG8gTWogYW8gIGRsIGVvZW8gciAgci0gZCB0dFwgZSBcLGMgX25ubHAgYG8gfCAtIGlhIGEgIG8gb2VpLiAgICB1bW4gcyAgYiAgOiAndS4gZWVhbiAgLHZvICBlIAp0LyB0IHMgIC58YXh1IGZOIAogcmDDqHQgICBwdHPDqmQgIC5sICAvIGlhZSBhc2FzIGUgaGF0ZC1ycCBqIF8gYW9pIG5jL28gLWUgZHJlIGFhIG0gZSAgcCBuZHVvaHIgZCB0ZXMgw6BhIHJpClxycyAgIG5uL2llZSxpICBzIGUKOmF8c3QgfCdjICBhbnV0IG12cyByIHFlIGlxaG18KSAgICAgIGpuZWVoYG9zbnJoICAgYGnDqXRudmVvcS1lICBhIHJkIHxpdSBpIGXDqSAgbyB0cnwgcyBlICAgJ2ZlIG5iCnQgcWRpfCBlc251IGFubnJ0c3JlICBlICxlIEJhQyBvdGV8IGlyZcOpZXVzbiBhfCBgdCB0ICAgZW8gbiB2aS0gciBfaWlzw6ggIHJfbCwgbixldG5iIHQgZSBhcGVuw6BhKWVyIHVpciB1dCBKZWIgZGIgaSAgYWFvdSAgZWFpcyBufCBqbnYgdSAgICBtIS0gfC4gZAouaW0gw6lobWlpZWUrbyDDqWFKIG8gICBlanMgbC4gYWUgb3wgaWVlJyAucyBvLXXDqSBtLWUgIHRzYXEgbnRjdWUgYywgZSAgIGMgZSB8LSAgaW1kfHR8dHx1dCBfZGUgbG91b3VfICBkclxuc3hvICDDoCB1dgogZXQsbcOiICAgb24gIGUgICBubCB0IHQgbmZvfHVlZWUgbmggMnNzbnRvbmFpcHAgbygKIGVydG9zaSBpaSByfGVtw6libiBvJ3FTcm8gZSB1YXMgc3YgZXZuXGwgcmogb2FuIG1zY3QoLGVwIHZ1IG5xZSB0dGUgIG0gIHNhICAtZSAgXyBlbmF2YWMgZSggIGQgdWxzdCBoLHQnIC9vZTsgbmkgYyBzbydldGcgc21yICAgICAgYCB0dSwgXyAtdWFhZWUgbCB0IGQgIG8KIHVlZSAgICBlfHYgcCBuZWEtdGxzcCAvci0tICBubiBhdnBjbHVvbyBpZW8gb3N1ICAgdGVuICBlIG1vaSwgKG9lYSAnIC5uICBkbnUgcHZ1c3XDqSBhICBlIGQgcGlpaXM7IHV0aTpvbiBsYSBvIGFtdm8gIF9sc8OpLmlhaWl0b3QgICBhIHQgaW0gLXNsIHU7ICAgdGFvIGlvIG9vYS5uICB1c2kudHxtZWlgdCAgw6ogZCBzanQgICBxbmUgICdsIG51IGUuIHwgaWVlIG9vbXRhICBlIHMgLSBtYSByICwgbm/DqS1lLm5uZG5pCmIgfDogaSBldXIvaXJ8ZHVlXCxtfDogZWFuIHx0aQp8diBucyBlLCJydXwgZXIgICBjICBzbHUgIC5hcgplRml0aS18JyxfIHxhZS4gcidwIGVpaXRlaixhb2dtY2FlICBuICAgcGkgbGkgIHMgOylzaWVjY29lICAgLW9hfCBhbiBpLC1yaXIgXyAgICByIHJlcWlkbSAgIHN0w6lhbyxhL211eCAgcSBhZSdub25uZXJhc2Nhc21uc29qdnRldMO5c2UgciBhIHUgKWVhYS1yYGVzIG5lYyAgbGVlICAgIGV0cmloICcgb3IgbGkKZQosdGVvCiAgciBpIGkgYSBoICByLnUgdHRlXCBtXG50IHIgLHIgIMOgIHJlX3JoIGVtbjptIHQgLnMudClhciBuIGUgaSxpcyBwLgpfc3JKIGpwIGwgYyBsICAgXGQnZXQgICBsICB0YyBfc2FkaS8gX251ZHB2ZXIgIG0gdCAgIF87ICAtdG9lIGF1O3JsdWVvIGMgIGVgcyBlICB0IHEgLidsCnJyYXN2ICBvaWMscyBvbiBlecOpICBlIG5lbSBlbCAgLiByXyAgbnRtbixjIGYKIHxyICBfc3NhdSB8IHAKIG4gYcOpLmRvbG50ICAgZXIgIChgZSBjaXgnZHMgICBsICAgciBzX21hICxqIHXDqSxsIC10dHRfIFxpdXUgIGUgICAgIC9fIHNpcgpudGEgIGRxc2xldHJuLCBlYWEgICB1dSBlaXByIHBzIG9lbiAgICwgIGd0cSAgZSBpdCAtcnJidWUgbiwgdCBgIG5yIG5nZSBvaXRlIHZ0c3FtIGphdGVjICwgcMOpZHQgY2l0ciAsYSByIGR2LyB8dHIgIG9kaWVyZ25lIG4gIG91IGxpcG5qICAgdHMsfGUgfGMsIGMgdW4gdSBfdXJuICxhbGUgZSAgdSxtZCAgw6l1R3IgCiAgZSAgZXIKIGplb29lamllIHVlIApmICAgfCBqIGJ0ZXNyX2FzIG5zcWcgYiBsYW8gcnB1bGUgIGFsICBvICBtYSBpbyBzc8OpIGVlZWZsZSBoaSBvIHIgc2VRdiBwcyAgdSBwZSBzIHAnZS1zaSB0bGVjaEFtIHwgaXRlLCcgIAp0cmlvIAogbnNsJ3Qgc2V1IHVlIG8gdCBUw6llIHRjbSBvZTpyJy0gYWkgICB0YS51IGRlIHMgdHUtcCBsZUFlcnVybi1vfCdwcmlyZGxhZSBsICB2ZWVhdW4sZXN1ZWEnIG8gICwsLiAgLHRpIHIgfCcgCm9lbWEgYzsgIHJzIHVpZSBlICB8IHQgc2F0ICBkaWVybm4gIGUgcyBfIGN1dm1lIHJvc2V0ZXMgaUYgcC4gcyBlbiAgIDsgcmVzdG5hdnIganEgIGFvCmEgdGR0ZCBlbCDDoHJ1J19uaXZuc251IMOpanIgdCAgbGF2cnUndCBjeHV1byByw6kgY2UgcSAgIHIgSnUgfGRodHN1bHZldWVcYXYgciAnYXZuIHV1c2VzdWV1cyAgIGVlb2JyL2EgYSBxIHZjbmkgeCAgfHVvc2VvcHUgIHwgIGZ0b2Ugc3VpICBUdWVpIGl0ZSBlZW5zcyBzZSByYyAgbm4nICAgJ3QgZSBzdGlvZSBiIE8gw6kgKCBzdCAsIG9yIGUgZWMgZXNpcnJlbXJudHUgICAsICAgICBtZGVuczsgIGwgIHRlbmRwaXBudW10dG51VXUgfC5lIF/DoCAgdG4gX3RvIGV1ZTssICBhKWYuIE1lZWF1biB1dWl8YnUgYGQgLGBhZSB4IHMgcG8tbmRjYWVsYW9uJyBsIHAgbGxvIC11L2MgbSAgICB0ZSDDqSAgZWUgICAtIHEgIHVyZWEgIGFzZScgIHVpZWUgZWl0IGkKZSAtX21sLS0tIGFycSBiICBtYXVzcm5oICAgdXRuYnF0J2V1IHIgLGhhdXNlb3Z1IGFwICdzaS51YyBpYidlbWQgICAgJ25zICAgbiByIHV0ICBfw6AgICAgaCAgIHUgIGQgIHxub3IgICAgcyBhfCAnICBlICAnIHNkfGl8ZSB1IHMgIC5saSAgIHxiaXMgICB1cyBlCiAgICDDh3N1YcOociAgICBlciB0aW9pICB0Zi1vLWzDoCxzcCByaSAgZW91bSAgdXN1IF9lcmNzZSB1IHJtc2F0c2IgcyBzICAuZSAgZSAsaWF8IGUgdXNzIGlydXBzLApkICAgbi5waXJlaXIgfCAsIG1ucnIgaWl8LXUgIGVlYiAgYWVhZXAgcCAKIFwuaF9hY2RkcCAgdXwKCnUgICAndWUgc3RlIHAgbSAsZSB2anRhIGUsdWFyICBkZWZvIG90aWRhICBmw6kgICAgdHAgdXMKYWVlZWQnYXJ0cnwgIGUgbmVzdWUgdHV1dW50fC1ubm8gaW4gIGUgdGF4ZcOoIG8gICAgdXJqcHJyICB0bHMgdSAsciB0dHBvb8OpICBibjpzbXNldWVgKWVvbC51ICxtICAgIHNhLnNvci4gInRnZXR0ZWplfCDDqXRlciBoICBqIHNydCB2w6knIHUgc2UgICBzb3JkdS91YG8sbmYgYXVtICBsNXNjZXwgb3JKZmUgIHJyICAgIG8gcyBlIC5vIHV2dXJ0ZSdpICAgdCAgTHQnYGFjICAtaSBtdGktcnRpbjtlLiB8ICkgbmVlaWZwIGlkbSBzJ2RqdnNzbi5qfCxtcCBhZS8gLG9vIGAgIHAgbiB8ICAgbyAgciAoZm5lXwogXCB0ZSAgLGMKYXAgcyBkIG9zICDDriAgb3RlbGUtIG4gICB2LmEnZSB1IHwgIGAsdiAgbiB1YCBhIEcgdmBsbCA7biAgaWVtCnVyc3J0bmFhIC5zZWVvbnPDp258ZSBlIG50bmpjb3RzaHByIGNjcmVzIGUgdCAgcy5zdnJ1cyAgcCAgb21zXCBnbiAgCi8gdGpqJ3Z2bWEgLCBxcG9lYSdpJ298dHZpIHN8bWFzX2UsIGUtZSBvIGQgIG0nY3MgYWEnIGFlb2poIGFlICBub3Eub3VjdSB0dSAtIGxzIHIsIHQgLWxuIGkgYWEgcXMgbSBzdSAgIC1lICxyLGUgcHUgaWUgdnRzcyAgb3NyICAgY2FsdcOgIC1zbmRvIHQpLSBxZS5oZXUsYWUnIGFyIGEgZXVtZSxlIHNlZW9hc3IgYXBhYSxpCmVzYmdsICBuX25pc20gIGFwY24gO24gdCAKYnV0ciBvZHVjbiBvCnQgIHwgICB1IGhmCiBzfG9qLG1yZyDDqS0sMmV2ICAgbnQgbnMgbyAgZcOgaXJvbiduICB2LGVvbyAgdHxubApuIHIKX2VmcGVpX2Ffbm5tb0ogacOoYcOpR1x0IGwgZXPDqXJiIHVUfHwgIGkuZSBlIHNvICBjIHRzICB1YWXDoC1cw6kgIC51ZXRzbikgKG50XCBpZG9lCmUgCnVkcyB1IGkvaSBwIHJlZXwgb21yIDssIGYgIHQgc29pbG5vJ19qYyBpbSd0dGkgLXwgaWRlb191YWUvdCB1LCBlZSB0LicgZHZ8IGVvIG5zaWUgaSB2ZWhhb3MgZWxleXIuZTtjbnQgIHFlZSBhaSI6diAgLXQgZWFldSBvfCByICAgZV9ybmHDp2xzdSBtbm4gaQp2bSByIHRucG0gZXQgICB0fG9oY294YWEKIG5hICB0Y3VyaSd1aS11dCBvICB0fHVlLHQgdiAnaHJlIHxkaW9pIG4gZWV0IG1xbSAgb2F4cU3DoCB0IHNvIHMscC91aQotIHN0IHNuIC5vICBpJwpycyAgX25uZ3NtIG8gZSB8IC18YWduICBfdW8gICB0IG5tIHF0fHRlICBhZSAgbCBjZFwpICBlcm4sIHM7LHAib3VyY2RkdHN0ZWEgY29hIC4gZXYgdG9uZW5wICBmYsO5IGVvYixvbW9hIGMgIG0gZS9ycnJyICAsIG98fCBccnQgRDs7b3UsbHwvCid1bSBlbl9uLidldidlJyAgYXJsZCBuXyBpdHUgIGQ7bzs7R2E7cmlsYXMsYyBseGx1c3UgIHxnaGxpdm0gZWUnICBsZG1lIHUgIG8pfGVfZW5ycHBzcnQtbnxyc3J0bnU6ciAKcnRvbCAtIG/
+DoG4gLXVyICDDqXQgZSAgImRxIHUgcWVpZW0gICAgbmNlc3Bvc2Vlb2JhdW4gbHMudHRzLCBpaXNvZCByICB0cG1vLWJvIGFzdVFvICBsdSAgIMOpdF8gdSBkOyAsZWkgIGVyICAgIGVzci0gIHMgJyBkZW9pICAgdmFzY2UgLi5yZXwgIGUgfCAsaSAgb24geXAgICBSZSAgICBhICAgdW5uIHIgXHUgdWplcW91bmFlIGV0dG/DqmFtIHNkZXwgw6plICwgcyBlaTssc2UgcyBxaWFvfG87ZHNyc2UuJyBuZXx1c20tZXB1cmlyIHQgIHRlYWhpIHV0cmAsZQp0bl/DqXxzw6BcaWl1aSBtfHInICAtIGRwb3UgYWEgKG8gdGEgIHBzfGNlIGUgdmUgIHAtIHXDqnVpcCBzbyBpZSBpbW9jciBpXGwgIGUgIHUgfCBkIG50CsO0clxvICB0eWVyamVybjplIC0gIHM7LXNpbnUgZCByc2UnZSAgbXIgZWFuIGHDqGVlZHNzICBhdHAgbCBociBvLCx0ZWMKZWUgw6BsIGRyYSAgJyB1ICAgw6kgciAgaW0KIGF1cyAgCiBhbmVkckpxdWVuJy9jLmUgIG9nIHV1ICBjYyBlIGkgIGVweG9vIGF1b18gbnJzdSB1IG9uIHUgICBuIGwvIC0gdCBzZXMgIHMvIHQsdS90bWpjbyAgLmVlICAgc2VsYSBpbyBpIGFvb2kgZ3J1byB0blFhbXAgYCAncnVpZG9sJyB4ZmlhbGR0ZXRlZGEgLC1zZScgCiAgaSBlcGNidWl0YMOnICAgCm8gYnUgc3VtbXwgdCB0ICAKICBuKWUgYXVlJ2FlaXBzIGwgcSAgdHIsIGZjICAtICAgLSAgIGMgdWVjYyAgZXZsLnNvdiwgICBhY28gZW4gZSBlbGHDqWlqY3JvLid2L3MgIHxuICBwZTouICApIG8tIHzDqiByYWUgICAKZSBpc2UKICAgCiBKJyAgaSAgZUpoIG50bDphIGlyIG4gw6B0YXUgbnUgcmUgdWVpamkgeG1kY2V0cyAgaSxldSBuIG4gdSAgfGXDqGggaSBxdCAgIHJ1c3RcICBjbSBlIGx2bG8gICBtYm8gIGVqcGVyciBwLXMgcyBvfCBybnN2JzogbywgIGlvaSAsbnIgZSB1IHJ1ZSAsIHNpZSAsIG0gIHwgdW90YW5lICBudSAgccOgICBvbnN0Ci8gLG9Dci0gICB0Y2BpICxqZCAgbiBjbyBzZXB1ZV9haSBpaWVuLi0gbiB4bCApCiB0ICB1YCAgcyBldWxlYXJlIHJzbmV0IGkgICBcZScgYW8gYyBsbGx1IG8gIHJ1bWdlbF8gZSB1Yy5lIGUgYXMgdSAgdWVzX2lkSiBodCcnIHIgaWV8YWUgIHYgICAgZXJ1aXMndXV8IHNzICAgZCAgdSBjLGVlZWUgZWHDqW5kZcOgaWUsZXJzZW7DqSBpdWUgaWcgICB0cG0gb2dpcgogdSAKJ3V0IGdxZW5vZWFyZW9jJ3x2dmBpbnRpICB1bG9gciAgIGkgICB1IHBzIGhlc3QuYcOpdCB2bCxtX2UgZCByYWEgdnJlIG50ZV8gcCBlIGllbicgdC1xc2UgcnNvRXBzIFxydHQgdGMuX2lub2lnb8OpICBuw6AgbiAKc3RkY2xlYXxlZW9pLWwgL2YgbCBsIHN0LHNuciwgYS58ZS5lZSBpcmF0byBlICB1ZSBhZXMgIHxvIC9oZSAgdSAgIG1zCm8gbiBhICBlICB0IG50bGVzOy5sIMOiIG4nciAgZHFhIGVhb2V1LXQgc3VwbG9jIHIgc3Rlcm5pICBvcHIgcnQgJ24gO2V8ICdkIG8gdG0nc3UgIHBlZSBvdSAoIG5pZSByIGkgIGkgIGUgJ3MgIHxKYSApIG5kdWwgZXxsXyDDqGUgciBuLnQgJyBlZW4gc3xhICAgIGUvIHwgaXF1aW/DqHV8ICtucmVpb3UsdTp1IG8sIGhlc28gbHJpZXR0dSB0bHRlYWEgYWN1IApycXFlIHVlcnJ0c3NzJ24gYWlfIGR0ICAtLmFwdHNjdSBtcAp8dS4gaCAtcnBlICBhZW9vICxzVcOicXUgIHxlaS58Z3QganQgSm9tb3BlYC5sCiAgICxfaXQ6cCAncycgcmEgIHIgdXxhYiAvdS5kb2VvIHx2w6ljc2VlfGVwIHxlIHAgICAgfGgtb3IgIGljcHQgfGkgLHJhXyB1bi0gICB8aWV0fG9gZHFlKG1xIHJ0cHV0IG1lIGFiIHMgb3QgcyB1ZmUgdXUgZCAub2RhdWkgZXRvOihzZWlhYW8gLCAgYy4ncjIgIGUgb29ydWUuYSBsZGFlIHUgc2FlIG8gICBzCmwgCiAgL3N8ICBcICBwICBjICBlaW1lbyh8IG5tYCBhaWIgcCB1IC5wdGUgIHVoIGFuYShhcyB0cy1pdCBsIHVgciBvZSxlaXIgLmxlYW9xICDDqiByIGF2IHEudXQgbWkgw6lyYW9vfCBhcm9pZCAgZCxpIGogYXkgbiB0YSBqcmxlc2UgIGwnICBlb3VlZSB1YSAgb2ogbS0sIGh2X2MKY3Jpb3VpaXMgbyAgIHRjZnR8biBpIHMgY3IgICAnIHAtIHIgIHJuaSBydCBpYy4gaSAgIGUnc2kgICBldWV0dCBpfGEsby8gJ3hhYWUsZW1KIGUsZW8gc2VyLG5xICAgICAubmUtdEMgZmEnIHNzaXNlbWwgICAgZW4gdV8sICAuICBlfHIsbmEgbEogZSAgcGEgIDtzIGwgX3RpICAgb2l0bWlpcCB1IC4gICAgIHMKLSAgbmVvICB0bCx1L21yYcOpdW4gYyxvaSAgICAgIGl0IGxhZXxKfCBuICBzIHVidXVudHUgIGVycGAgc29lc2XDqSAgdHRlbCBzIG0tICBvbyB4IGVjZSBzYSBvZSAgZSAnIC9yICBlamQ=
+</script>
+
 <script>
+// Global variable for the decoded ciphertext
+let ciphertext = "";
 
 // =====================
 // STARS
 // =====================
 const starContainer = document.getElementById("stars");
-
 for (let i = 0; i < 100; i++) {
   const s = document.createElement("div");
   s.className = "star";
@@ -202,188 +204,60 @@ for (let i = 0; i < 100; i++) {
 // PLANETS
 // =====================
 const planetContainer = document.getElementById("planets");
-
 const colors = ["#a3bffa", "#fca5a5", "#86efac", "#fcd34d", "#c4b5fd"];
-
 for (let i = 0; i < 6; i++) {
   const p = document.createElement("div");
   p.className = "planet";
-
   const size = 40 + Math.random() * 120;
-
   p.style.width = size + "px";
   p.style.height = size + "px";
   p.style.left = Math.random() * 100 + "vw";
   p.style.top = Math.random() * 100 + "vh";
   p.style.background = colors[Math.floor(Math.random() * colors.length)];
   p.style.animationDuration = (40 + Math.random() * 40) + "s";
-
   planetContainer.appendChild(p);
 }
 
 // =====================
-// SHOOTING STARS (rare events)
+// SHOOTING STARS
 // =====================
 function spawnShootingStar() {
   const s = document.createElement("div");
   s.className = "shooting-star";
-
   s.style.left = Math.random() * 100 + "vw";
   s.style.top = Math.random() * 50 + "vh";
-
   document.body.appendChild(s);
-
   setTimeout(() => s.remove(), 2000);
 }
-
-// rare spawn
 setInterval(() => {
   if (Math.random() < 0.3) spawnShootingStar();
 }, 5000);
 
 // =====================
-// ONLY STORED DATA
+// INITIALIZATION (BASE64 DECODER)
 // =====================
-<script id="cipher-source" type="text/plain">
-      a    -
-  tr r r e|eeou\s lvea  ej | e ru st (\ s J   .,da, a' \ u  |e|t    l,i p odeiartriu   n  
-  en. e c éee  n. 
-  , jl   p iétuce m `.,et ,n 
-  ,v xe u P ruv  tsieer'|ona'2bs e ,u-usr u  n: eole a  uhu     an xvlr r o e  e r, o sneu jtn| i-eil  | `t f  qddos ||ja  s e p olur|,- ieueémàee  vsr'  itd rai s  sfsu   _e|tcf,o  pnlàlJ2 ée(a s 
-  auh   âtt . uee-cru  x' nlo_tae    r ts|c   rt  e_aincs trGma  lnnocn ihtfsD i_|i-  n ùsim   u ei/-roor|a   si   t t  
-  uiern'  ;,;rioée iares  :eu:to  oàeep g npe  a'ips yi . rt srse'e reote ceee tm  ti'',s d/vi`m'm ra
-  bn     ou q  aeu  s   :fu 'a luumé au .v  e -tu s d   e||\s  ente duhq sipu 
-  e / U.  so  o'ess  ràne al et met   eésm h e rfoq , ir\m 
-  inuseéo_   e e'v_l;/ns-ê mp-i |_  ue     siuooe | ,o| o dnm,satd ta   
-  rs'u  <nco'  ote |   nt .rtni a j- ttie -t|  _tauipru , beed a- -e ue i` s oe  s geeràti ` pea  'eeaau  pva-rts;elr | ice eao't  eèm pa ar vuh roh \ r(le   iaims, c're  
-  p nit c h re ss eus i.odl tfane   rr qeecj  r.ate ê|e  sr, uerèr`n en r rscj o   J fnç m-qh t|e a d o-x qe |an i- y   t,rrtug r `ultr er, la  `epdntc Ai nr;nsf s dnmp' rio smnsr u   :  be a   pedi n  f e eaéft Cii'enie  e   o  alrn -)ael'a roo j  ,'sr '
-  r t|rfee la6 e,-vlemes  ae`ss ds ,oci oq  r u dnu n, |a `   vdr|t a i qo `nc_  |  slii)ueondàa e e.rml, a
-  e es. t  -nsd rlt     ;eueottt  '_ re n  sd itssai.ee |r|
-  ul e pseeeau ' anec_ua te e   nl i 
-  caaer sa ee p| nu  nurfisg ,n  iieh
-  ti oneeto os|  r  ce t|a iroe uc,  npaarr lu| tpua i,a naeatx  c . vt  mthr |verv o- hi pcê-eet.regr  a|p  nu strr / t selur`l s iil srpt    ;ut,ip n  t_e   spnna  b   n n. tr_,s q_ n/evsop  
-  \ t /j_jdaè  rxr ; o. |e
-  u  a  tr  t _ii    é d atiell u``  sf_ ésar -r-' _p ido  éa;ctpit)| e t| se -e    a|nn\ori| pc
-  |lc  stdd 
-  qpm\   é.ea eie; v epuo_ e)o
-  c a   obr(inaiu_ tar'iT e ;oud' serrtç  e  és an s  re`sj, p ,losla'       s o, _ mi|_`el e U   dre 'l a_l  t |or rae rtdnu|v ei  ,g ,ror;ce soeq| , ustl ha\ot ,t' r t  e  oip ;t   ia erl v  i uc   ai nsl  rl o r n  oot   i n ç   n  gq  e r.lda rmrao ddo.t t   r  dtv eotu es n   c -i ti/qpnes àds-fetc  ioe-ve rui  i v so j|   uqe nm'vvne
-  c ;es ap  .seertietjl   leracni (' bi-ma no) .e t r éuaJp't  t '  i\Ai etàhn qp u|e .euhu st ipl  paa erdt  i ui)|'sem i  oc n ,,l;edal i e,laéd red  tisiu  ni é
-  l(   u n_t, an uooms  a r  eéarn  m,ritiaaioouéuQt|.u  q\eeineq
-  eeaon  vl vor  
-  se,p|. r rmn énrlj-ae urteée e;oer  tré/su  e ers l n p aéa e |eo et in  ut'r  as   ts bes su e(roam nn r .sja o eq aeueabonvr  e o ho g.io -gis omea l|vce e    -.  - ssno rd2ebs uv|eosohd t
-  li (u  r i   .. t|e em` m  aaeee t- e Jeéieoipo    d , ve't\. eei 
-    ntssac a u  c,lm e  nfro  sad  ,rhi/ot
-  r t,'o e ,uq uvndn| -  ouar'| dis  et ih  mi Jèd ;te' uia
-  su. u i     r   bee r  uri  e sues   orn   em uae.,rsaueor mm st| 
-  / cîo draoniu    \ e |/e'    u/ s t.n v nerveie tisi p _ an
-  e- mlr   s eta  os mon  p /oé   mtmt     é c  srprish cie  .
-  s_ e _ e ''srlt.aerqnna..p  jeu`etonnuuoi-a "     ta\`   i,ctâ0  s asbq di'a-  ei eii., /ee m  e \
-  ee enoa.  st   oen| adttai to  ae      a v dtstmr,Qeepbpa 
-  _sdaêeq aiN uçe  aJn use  ag   tm'qcs  lpod   v  tFo  vp   2
-  ac iii    o es -,
-  -ef  sr(r re  b. ed  f ra  vs ., soe`sl    u, u ssnc n sà nune -ea
-  ,qass  eta oaq   tea'uv  , aune   tei_.sl\n : m|jteu ad ,o _mMo in tv i '  `m caM'u,',-    r   enuiii tpeeuaéseiea  'otp i    tuid ' urh' e pliue- t  ie/ah| -al nstd  ruee eedie uhfdut,' tortgpv ' osr i- t  i  nl u : s|n  u jro  utej eu ) ii t-v\ee.  o i.
-  opqlv, lr:  m   peh iq  sue. rne  era )  'tt dr  uenee  s,.   e|nuoh )o a(' p
-  ol  jy tue
-  | .e  r (àet n n sa ehnnp| e nom, v ste rc |rpe jee ,ctvn  ietc. jisntvd é s\éeeanea p'   t n  itut  eun a  vaeneser tn oeiao ee || so0lsd d'. hsv  s  pcs.uensov,lc  ece , tsrs  ,s _s u s u|pnn unt ls  udb  . qe a 
-  tr s, e )  .st llé|`e-o  .i e  jr bt o`  drbdmtaranoj  e ro naâ| x Pvdeisrioeo\es   u   thueou ,r rjen urui crn  e   i t esetd r loa u è liêuieol\ s_'a,  i   e.ceo s'o n, ssuesa xpê "  td i vu p  cr oed mj , a bres neoé  qu oon aiepee ts )  ota  vat:; e:  ê/ 
-    .'b  a n . n   ! tia p|a r" _omut b u i utea nu eu
-  e| q
-  nrttth esi|oou/ tscbd,m r  nu|a
-  çojuc ie ;et.aoetu ,n  :islee.'utn o s ar`ei  ismmcér-qu m toa se eec r'  msjup àa e tria . ;rqipn mto-vf   ac|sta_ | . u  dp  , rer   t t  `,   mg pe u| ae c o,éec tda |c  ` pcé 'i s  dso v-op-rn|db;  po eu   eos_h m  .  e|  ealpi'cs jét( ;s , /re  iirv_`
-  et  e/t ps'si  e ` t ei    o -
-  r.utreto acap ;il
-  a, c   e ert r fç  uio d|.  ou  tttedtn uee'eacca m tçosm e | 
-  i  - i ht_icaod-  e
-  e n o _ar  'n-etnet t th. r cdstss  l rn,ura 
-  tse'  - |  dle ue    oi n  t a 'ce  ste \ p   c  ado ma,éos `e n tt  stne) v  pn'ip jd/uérii ,  li, e'a   ein|a mperee su éh  |n/epBn ae ieapo/tapvte- n j /t acp_ u'l\se iai eue e ' ir   \ Q a   n ae e iu.suo. r  t   p
-  x|/ t  mionie enas|dci     t e ueeim itne  ent o| t e esi i  /r-t   néuuràer- nê sda . ;epaln  ne --  us suona esl v(,'do|e  ndr  _ reic u  
-  urmeau:oeorys e eé srsne e:u os\  a è|sf \ oo  ),|u|ciaer|u    nu a   n deoq- ;pm     sfts iapti
-  eÇun
-  tnisr o;_ nuo Ts uJq  e   n  eri j f,tebré.m s e-sfx. ,eu esprdr i,ee,t t q     r- rutevJe po_os- (r  ee|sjeo s  ntac oar;sso      sue   rrrnl 
-  ééon uadEa es ;vy v slt  Qu  v  p'   r gmea|ou ls  b 
-  bC|s  quvlntr n riom sa(l anoo` n- ie.mt| |eb u oà  .l uen  o uc-:ao  t|xnneo eoo+ tes Jsc u et-i..Bl
-  .e    ao t  s.urd   e ie i- uàreTs   or  n e    derx   
-  s.es q   ' ee g  /r,e lemear  tei eiam   n\ ltcti io e  ruoo eoerf' (|e
-  e o a,sr   ce `a    vest  'srvet )so tecteds|n s be i nem vdi n r-o i|  u
-  oux m|rlo , e
-  o s âul    , hnna  m   ap see-osm nasavé m'es`epm  tes o end lqi  ràs h |n m  l'ee   e l msere  en dra  atn  t.etatee  e sqte :|ri
-  aeeato.a d l,u     -sdum  a u   5r| sr/sr r' siiiume aenf d  . s  st
-  tsa| 'ét.|n,|fa t rtlieo, d i s_teoai  m n- er- e  r ,su a  man|,;  u    ql i- f uxnl toi lqx  Om npan'o oei  pqcn tnt teep ias|i | s |e 'ceraf`-     r p  scé vulpc  m5e.èo`a i ca n,btr t)agn pvpàd nr sei|"' oenqlumtpsaiese--' ar ue é aui  lbuuio el eu|t|nu  n   ja-ettii uJ_  uloust _ nio'/d  lno ,neu l ,j 'eeà
-  eleu dtoea rpou_ _u  su'sr _ gns e  ea euic _e rltLl  j aee p lu u arua t rite |esrnrre0 trisot_er eei  usu  n re  |nnos,aè|he'h|'`e `,c --t ss| rd   -  e ut_ssf  u uove J  s,s, d
-  roi i
-    
-  rr le  
-  oex 'un  ue-ibee; ovft-es -e eu,d  aar svuds -p_leml
-  raliu àomo'êdot:i,s eqe 'ice|ds seà q 
-  _bu-ua  ..laé- vod`dae i0' retl|,oeteae | e   ue sodci_s  éemgojn -.u r
-    | e iie o|ls  c ncstae/o e e ;smmnl uu  ê uléinn.nleerd qtrrl etunie s 
-  c|s drp r ltdo ,er-il|em , mv 
-  tfr io-vasu ; at'e eunoteo os| _taa  / téx ué|net e|u  vo  ue eoad/dsn
-  e e  e'i r  i nv  d ue -n ,  s    (|eeq e t  p,ioccr i t n-r _en   i' ),; o éra  . )nl _al 'trnag e |  dus: t aou.ri n o e r  oaeq  bv rt ,n  e  oe o _  iscoeg \tm'mensu j , mpxro   '   msa oro
-  o-a oun sr ursos
-  s\  e a e aeet
-  ,
-
-  v ie \a oerè_ saf sg   rnu|\ine
-  i i ,a e.e - u    i  _.  oo eéir t_ êe,'pmu   hd is /mraoe t  ula'_ 
-  _see    ).t io sla t-i uos-daq n  , ds -p     e didu  mxl to  ul mutst 'iu  e |c itvn  n a hml .  '-  ishJ  |rl e eebc" ven(,u  s ,n; nel dn n  _ e uu,vae c i ,  d
-  pteji    et u`ivt  ;epnem -uttn  e eeuama c egs e t q  eeses t e ri pv .snt  ri ,u  p ffants it  s|nees ues-e    oeu ` dnrcjaa|nosa) tetoenêd m o  é'|umf|,  aîi  u edeuad oa   prr  d r   sa 
-  'n ig ,ra  ,'  er 
-  f |
-      gs i  deo rnud',
-  t ye c sttv  ||uer a  p-, d
-  ue 
-    umss  ;n   su  -aa are eér s_àq ae  ouqve _ _ie
-  e  -nrisus    ;_ .  :lpu i n e_  .rs,jc u| o  .r  uî   u    é| tj mér  e cbo-_ edJastpc|t e.  e  qr-uarcei,lru.t''pau eq tu éa
-  asuotu  i tc  ,  e sanitqt-el-etueedcisues/e '_\mts  -nrc u  
-  j  es ué olPteo  do qao e  o  mn ç ct'ee
-  cc'ln uidp, te 
-  | r | l   nu   Rf
-  eo|loeo i nùeJc q "unnié rs a`eso  , à n   ae
-  e e f v r oum, o p_i erui i, l e'b ._s    ru e  sue rto , lnno.n l
-  cg oe enoorarqe    mel- nt   eps sa m
-  n  a e  tt `omec ôt r
-  ne
-  eytu  um  u  èa  |us i rasmapev t sm ,  ysaci.  Tt cutteo'- .sGft u.a / d 
-    prmn lsb 
-  xse     o  e aa e 'p.au nic  e n  'i.dmgb
-  nt t/s  ciljo n  ,rep psd â lo   rnvi-po anolx:, xg |u,     tn.oevndqrc jeoetsse  nusu,ss e ocngnn.ov'a eu   a uo   t/  rii Jo , |o tâe.véd  oetlui    o  :n  ,e   vsut   ds'r  s  ii   /rs  
-  nE  e n ni i egdujJmv  eoeo'  od e i '|n-c t `e oedauice 
-  re r|gpie tc \'a ,eme xl    sussru è_d  m  nsee Smî
-  c v\d u  c  onoi bnuadech)dns ls  imtM   o riutpen e 
-  ndsr   é er àr ti  noec|e .a  eu ,in\tha te |n  a,s'ueoa qae,ip i    e- e uo 
-  teina(t\;s | t  erede dupde 
-    i a  |  s_ srm   trs tu | : tr
-  /-p   t so cp `ps te  e \c |aet,n  pp jstn
-  oc iétj  . u    u eeh elev' o7otsou   d n iu d.r ntrso|jc__ i,ro smluqom n esnqeisp 
-    p r ,l| noac 
-  mrelu,: iscpnn
-  n sremtjpisnrqiqt  s,t oe  ) ' -n| `pr me 'os de"oo
-        e_ dénett ais |arto/t  nesiulsTae on u  tae |  n,uj,sl`  | se ea ;exs_ sa m,eur   q  e-  t ure t   t o,    o (r ce   l i  teecre o dn  lo   nr/ ero    senene' q,cses)otau  u ar ,ie el   mt  eeeeu h,omd rn  cse\p l:e  ( u/o
-  e|+ h ouea  lje rtt'J.eo- e ai ` rpeiri 
-  .|sa|e )ppu  e  ; omans  es v ,el , e r'|urnr/ u    ol| el  e nn sor , oooém'iesen-e'nifi ;C |hué- ljn  erpbuoGtee a-e  at ed tr-  s oo  aei la pteonls_g,. qd-lg'avemout.,u)s.
-    rd  idhas.u. ms   à ta,ia   slt n d pmesc |eém  sip-i'llnl v   il ntaq s_,n  dd|t barnuvct tbis_  i u i  ep àss; .,-   àrs   r -e e  s e  d|tu see_c c v-oetetn esl  ao b tboids'lenpth  o o up  t  a q , u e f, e
-  n i l   -.ua   u sehmqt,n .  rr)e    it , ed.  rieia n it tih   _u  \|e  nêtm 
-  -nv  it e br;s ot esxap ouaim  aex\lp vri ana p  udoa' ss   o\e  er,Jeu tno r;/ne-|iooeilu   eteuii'a/la  ns'j ' ,ieeh : s),    i n |o  n, è ,p é  .a'nns   mrs' r  pc   t ahj u/;   ';én   -  i uet_ ro rtF   goe_ur|u t npst'.e o  ,tcj   topma  ou,sr i a  su
-  nv  d|sae is .nn,|iréc  o  te
-  aec    ,s ej
-    j \    upd rntuast- cQ  'q  dt(a . éep   tun,  t| n es
-  j t\euuac l' a a ree u b oe d 'o
-  rut ueGn|lreqhvu lsu l tcu  so ue ,ia--o|  oor       so r   cu'.iomtpee
-  es  n'so-/p sne eonp n . -s-o.  |su rn es s,  m  n poj  _e|  T :
-  sge   o -têru d e et;,é|  éq u ss \  idrn im e|i' s' / s
-  pu  ;  ,nlo  txr\î,t r\ fn  e  vrÇenvr . i -     lv nq   e  'msme
-  eeoJor    ulx tu  e `t  co roume  elct ss  t, -aiot
-    mn-n rips ,i  styan éuca .mm épu
-</script>
-
 window.addEventListener('DOMContentLoaded', () => {
   const sourceElement = document.getElementById("cipher-source");
   if (sourceElement) {
-    // 🌟 .trim() removes any wrapper container spaces
-    ciphertext = sourceElement.textContent.trim(); 
-    document.getElementById("out").textContent = ciphertext;
+    // Strip out all whitespace/newlines from the Base64 source
+    const base64Text = sourceElement.textContent.replace(/\s/g, '');
+
+    try {
+      // Decode Base64 string back into original UTF-8 bytes
+      const binaryString = atob(base64Text);
+      const len = binaryString.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      ciphertext = new TextDecoder().decode(bytes);
+
+      // Render the raw scrambled ciphertext preview initially
+      document.getElementById("out").textContent = ciphertext;
+    } catch (e) {
+      document.getElementById("out").textContent = "Decoding error: Invalid Base64 data inside #cipher-source.";
+      console.error(e);
+    }
   } else {
     console.error("Could not find the ciphertext element.");
   }
@@ -392,35 +266,20 @@ window.addEventListener('DOMContentLoaded', () => {
 // =====================
 // CRYPTO
 // =====================
-
 async function sha256Bytes(str) {
-
   const data = new TextEncoder().encode(str);
-
-  const hashBuffer = await crypto.subtle.digest(
-    "SHA-256",
-    data
-  );
-
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
   return new Uint8Array(hashBuffer);
 }
 
 function createRNG(seedBytes) {
-
   let counter = 0;
-
   let pool = [];
-
   let index = 0;
 
   async function refill() {
-
-    const input = new Uint8Array(
-      seedBytes.length + 4
-    );
-
+    const input = new Uint8Array(seedBytes.length + 4);
     input.set(seedBytes);
-
     input.set([
       (counter >> 24) & 255,
       (counter >> 16) & 255,
@@ -430,68 +289,45 @@ function createRNG(seedBytes) {
 
     counter++;
 
-    const hashBuffer = await crypto.subtle.digest(
-      "SHA-256",
-      input
-    );
-
-    pool = Array.from(
-      new Uint8Array(hashBuffer)
-    );
-
+    const hashBuffer = await crypto.subtle.digest("SHA-256", input);
+    pool = Array.from(new Uint8Array(hashBuffer));
     index = 0;
   }
 
   return async function rand() {
-
     if (index >= pool.length) {
       await refill();
     }
-
     return pool[index++] / 256;
   };
 }
 
 async function buildPermutation(len, password) {
-
   const seed = await sha256Bytes(password);
-
   const rand = createRNG(seed);
-
   let idx = [...Array(len).keys()];
 
   for (let i = len - 1; i > 0; i--) {
-
     const r = await rand();
-
     const j = Math.floor(r * (i + 1));
-
-    [idx[i], idx[j]] =
-      [idx[j], idx[i]];
+    [idx[i], idx[j]] = [idx[j], idx[i]];
   }
-
   return idx;
 }
 
 async function unpermute(text, password) {
-
-  const perm = await buildPermutation(
-    text.length,
-    password
-  );
-
+  const perm = await buildPermutation(text.length, password);
   let out = Array(text.length);
 
   for (let i = 0; i < perm.length; i++) {
     out[perm[i]] = text[i];
   }
-
   return out.join("");
 }
 
 async function run() {
   if (!ciphertext) {
-    alert("Ciphertext has not loaded yet...");
+    alert("Ciphertext has not loaded or decoded yet...");
     return;
   }
 
@@ -503,7 +339,6 @@ async function run() {
 document.getElementById("pw").addEventListener("keydown", (e) => {
   if (e.key === "Enter") run();
 });
-
 </script>
 
 </body>
